@@ -2,7 +2,7 @@ package com.liyan.pojo;
 
 public class Account {
     private int id;
-    private String accNo;
+    private String accno;
     private String password;
     private Double balance;
     private String name;
@@ -15,12 +15,12 @@ public class Account {
         this.id = id;
     }
 
-    public String getAccNo() {
-        return accNo;
+    public String getAccno() {
+        return accno;
     }
 
-    public void setAccNo(String accNo) {
-        this.accNo = accNo;
+    public void setAccno(String accno) {
+        this.accno = accno;
     }
 
     public String getPassword() {
