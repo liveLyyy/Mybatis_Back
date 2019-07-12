@@ -2,6 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <settings>
+        <setting name="logImpl" value="Log4j"/>
+    </settings>
     
     <typeAliases>
 <!--        <typeAlias type="com.liyan.pojo.People" alias="peo"/>-->
@@ -23,5 +27,6 @@
   </environments>
     <mappers>
         <mapper resource="mapper/AccountMapper.xml"/>
+        <mapper resource="mapper/LogMapper.xml"/>
     </mappers>
 </configuration>

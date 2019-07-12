@@ -15,4 +15,7 @@ public interface AccountService {
     int SUCCESS=5;
     //accIn收款账号，accOut转账账号
     int transfer(Account accIn,Account accOut) throws Exception;
+
+
+
 }

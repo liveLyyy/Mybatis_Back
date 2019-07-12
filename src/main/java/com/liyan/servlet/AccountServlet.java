@@ -31,7 +31,7 @@ public class AccountServlet extends HttpServlet {
             accIn.setName(req.getParameter("accInName"));
             int index = accountService.transfer(accIn, accOut);
             if (index == AccountService.SUCCESS) {
-                resp.sendRedirect("log.jsp");
+                resp.sendRedirect("show");
             } else {
                 HttpSession session=req.getSession();
                 session.setAttribute("code",index);

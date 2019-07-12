@@ -8,10 +8,10 @@
     </select>
     <!--根据账号和姓名查询账号信息-->
     <select id="findAccName" resultType="Account" parameterType="Account">
-        select * from account where accno=#{accno} and name=#{name}
+        select * from account where accno=#{accno} and `name`=#{name}
     </select>
     <!--accNo修改账户余额-->
     <update id="updaBalanByAccno" parameterType="Account">
-        update account set balance=balanc + #{balance} where accno=#{accno}
+        update account set balance=balance + #{balance} where accno=#{accno}
     </update>
 </mapper>

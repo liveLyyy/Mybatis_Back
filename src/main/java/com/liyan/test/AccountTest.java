@@ -1,25 +1,23 @@
 package com.liyan.test;
 
-import com.liyan.pojo.Account;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import com.liyan.file.PageInfo;
+import com.liyan.pojo.Log;
+import com.liyan.service.Impl.LogServiceImpl;
+
 import org.junit.Test;
 
 import java.io.InputStream;
 
 public class AccountTest {
 
+    LogServiceImpl logService=new LogServiceImpl();
     @Test
     public void find() throws Exception{
-        InputStream config = Resources.getResourceAsStream("mybatis.xml");
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
-        SqlSession sqlSession = factory.openSession();
-        Account accIn=new Account();
-        accIn.setAccno("1");
-        accIn.setName("张三");
-        Account accInSelect = sqlSession.selectOne("mapper.AccountMapper.findAccName", accIn);
-        System.out.println(accInSelect);
+
+        Log log=new Log();
+
+        PageInfo pageInfo=logService.findpaeg(2,1);
+        System.out.println(pageInfo.toString());
+
     }
 }

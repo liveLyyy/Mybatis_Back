@@ -1,13 +1,14 @@
 package com.liyan.service.Impl;
 
 import com.liyan.pojo.Account;
+import com.liyan.pojo.Log;
 import com.liyan.service.AccountService;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 
@@ -29,6 +30,12 @@ public class AccountServiceImpl implements AccountService {
                     int index = sqlSession.update("mapper.AccountMapper.updaBalanByAccno", accOut);
                     index += sqlSession.update("mapper.AccountMapper.updaBalanByAccno", accIn);
                     if (index == 2) {
+                        Log log=new Log();
+                        log.setAccOut(accOut.getAccno());
+                        log.setAccIn(accIn.getAccno());
+                        log.setMoney(accIn.getBalance());
+                        sqlSession.insert("mapper.LogMapper.insertLog",log);
+                        Logger logger=Logger.getLogger(AccountServiceImpl.class);
                         sqlSession.commit();
                         sqlSession.close();
                         //转账成功
